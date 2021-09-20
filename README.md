@@ -1,4 +1,4 @@
-# Starbucks-Capstone-Project
+# StarBucks-Promotional-Offer-Recommendation
 This is a capstone project for the course completed in response to Udacity- Data Scientist Nanodegree Program.   
 Once every few days, Starbucks sends out an offer to users of the mobile app. An offer can be merely an advertisement for a drink or an actual offer such as a discount or BOGO (buy one get one free). Some users might not receive any offer during certain weeks.
 Not all users receive the same offer, and that is the challenge to solve with this data set.   
