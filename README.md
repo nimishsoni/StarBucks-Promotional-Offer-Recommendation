@@ -17,9 +17,7 @@ You can find the blog post link here [MEDIUM-BLOG](https://nimishsoni.medium.com
 ## Motivation
 The motivation behind this project was exploring the Starbuck’s Dataset which simulates how people make purchasing decisions and how those decisions are influenced by promotional offers.   
 It was driven by 4 main questions that were answered as the project came to its completion:
-* What is the proportion of client who have completed the offers based on Gender?
-* What is the proportion of client who have completed the offers based on their Age?
-* What is the proportion of client who have completed the offers based on their Income Level?
+* What is the proportion of clients who have completed the offers based on gender, age, and income levels?
 * What are the most important features that help drive the offers in customers?
 
 <a name="summary"></a>
@@ -27,7 +25,7 @@ It was driven by 4 main questions that were answered as the project came to its 
 The project was completed in the following phases:
 * Dataset Exploration and Preprocessing:- In this process, the data provided was cleaned, processed and merged for further analysis.
 * Data Analysis &  Visualization: In this process, few questions were answered by analysing the question and  providing visualization which answers the questions 1-3:     
-##### In order to compute the proportion of male or female within the age range of 29 to 69 with income ranging from 30k to 100k who have commpleted the offer, we need their respective data and the total number of participants in the test.   
+##### In order to compute the proportion of male or female within the age range of 30 to 70 with income ranging from 30k to 100k who have commpleted the offer, we need their respective data and the total number of participants in the test.   
 * Creation of supervised Model and Performance Evaluation: In this step, various machine learning model(Decision Tree, Gaussian NB and Random Forest) were tested on the given dataset and their respective performances were evaluated. 
 * Important Feature Analysis: In this process, the best estimator among the three was used to predict the most important feature that impacted the promotional offer completion in customers.   
 ##### We found out that Time, Duration , Reward, Difficulty and Discount are the top 5 feature drivers that estimate the offer completion with Time being the highest impact driver for features
