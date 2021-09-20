@@ -92,8 +92,4 @@ time: (numeric) hours after start of test
 I would like to thank Udacity for this amazing project, and Starbucks  for providing the data.
 
 <a name="running"/></a>
-## Running the Application
-In order to run the project, you can find the ipynb notebook file in the project directory which you can run directly, Make sure to keep the data set in the data folders, if the data location is changed, make sure to reflect the changes in the import section of the notebook file with necessary adjustments.   
-In addition to this, you can also find the .html file in the project directory to take a quick glimpse of the project too.
-
 
