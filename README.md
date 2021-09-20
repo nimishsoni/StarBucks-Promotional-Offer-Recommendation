@@ -9,8 +9,7 @@ You can find the blog post link here [MEDIUM-BLOG](https://nimishsoni.medium.com
 * [Summary](#summary)  
 * [File Description](#desc)  
 * [Prerequisites](#prerequisite)
-* [Acknowledgement](#acknow)  
-* [Running the Application](#running)  
+* [Acknowledgement](#acknow) 
 
 
 <a name="moti"></a>
