@@ -13200,10 +13200,12 @@ div#notebook {
 <h2 id="Problem-Statement">Problem Statement<a class="anchor-link" href="#Problem-Statement">&#182;</a></h2><ul>
 <li>There are three types of offers: buy-one-get-one (BOGO), discount, and informational. In a BOGO offer, a user needs to spend a certain amount to get a reward equal to that threshold amount. In a discount, a user gains a reward equal to a fraction of the amount spent. In an informational offer, there is no reward, but neither is there a required amount that the user is expected to spend. Offers can be delivered via multiple channels.</li>
 <li>We will find answer to the following questions in this notebook.
- <br> Q. 1 What is the proportion of client who have completed the offers based on Gender, age and income levels?
-   <br> Here we will analyze the data
- <br> Q. 2 What are the most important features that help drive the offers in customers?
-   <br> For this we will train the model using classifiers by divinding the dataset in to train and test and use the train model to predict the outcomes on test data set</li>
+<br> Q. 1 What is the proportion of clients who have completed the offers based on gender, age, and income levels?
+<br> The data is analyzed and visualized with Bar charts subsequent to preprocessing.
+<br> Q.2 What is the Best supervised learning model for predicting offers based on demographic data?
+<br>The metrics used for evaluating the models are accuracy and F-1 score. Accuracy provides model performance for true positives and true negatives while F-1 score provides model performance on false positives and false positives.
+<br> Q. 3 What are the most important features that help drive the offers to customers?
+<br> The parameters with highest weight for the models with the Best performance are selected as the most important features.</li>
 </ul>
 
 </div>
@@ -13211,7 +13213,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13238,7 +13240,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -13266,19 +13268,6 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">portfolio</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span><span class="n">portfolio</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
@@ -13288,56 +13277,8 @@ div#notebook {
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>                       channels  difficulty  duration  \
-0       [email, mobile, social]          10         7   
-1  [web, email, mobile, social]          10         5   
-2          [web, email, mobile]           0         4   
-3          [web, email, mobile]           5         7   
-4                  [web, email]          20        10   
-
-                                 id     offer_type  reward  
-0  ae264e3637204a6fb9bb56bc8210ddfd           bogo      10  
-1  4d5c57ea9a6940dd891ad53e9dbe8da0           bogo      10  
-2  3f207df678b143eea3cee63160fa8bed  informational       0  
-3  9b98b8c7a33c4b65b9aebfe6a799e6d9           bogo       5  
-4  0b1e1539f2cc45b7b9fa7c272da2e1d7       discount       5   (10, 6)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span><span class="n">profile</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>   age  became_member_on gender                                id    income
-0  118          20170212   None  68be06ca386d4c31939f3a4f0e3dd783       NaN
-1   55          20170715      F  0610b486422d4921ae7d2bf64640c50b  112000.0
-2  118          20180712   None  38fe809add3b4fcf9315a9694bb96ff5       NaN
-3   75          20170509      F  78afa995795e4d85b5d9ceeca43f5fef  100000.0
-4  118          20170804   None  a03223e636434f42ac4c3df47e8bac43       NaN (17000, 5)
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Using TensorFlow backend.
 </pre>
 </div>
 </div>
@@ -13351,7 +13292,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">transcript</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span><span class="n">transcript</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">portfolio</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13364,25 +13305,282 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>            event                            person  time  \
-0  offer received  78afa995795e4d85b5d9ceeca43f5fef     0   
-1  offer received  a03223e636434f42ac4c3df47e8bac43     0   
-2  offer received  e2127556f4f64592b11af22de27a7932     0   
-3  offer received  8ec6ce2a7e7949b1bf142def7d0e0586     0   
-4  offer received  68617ca6246f4fbc85e91a2a49552598     0   
 
-                                              value  
-0  {&#39;offer id&#39;: &#39;9b98b8c7a33c4b65b9aebfe6a799e6d9&#39;}  
-1  {&#39;offer id&#39;: &#39;0b1e1539f2cc45b7b9fa7c272da2e1d7&#39;}  
-2  {&#39;offer id&#39;: &#39;2906b810c7d4411798c6938adc9daaa5&#39;}  
-3  {&#39;offer id&#39;: &#39;fafdcd668e3743c1bb461111dcafc2a4&#39;}  
-4  {&#39;offer id&#39;: &#39;4d5c57ea9a6940dd891ad53e9dbe8da0&#39;}   (306534, 4)
-</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>channels</th>
+      <th>difficulty</th>
+      <th>duration</th>
+      <th>id</th>
+      <th>offer_type</th>
+      <th>reward</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[email, mobile, social]</td>
+      <td>10</td>
+      <td>7</td>
+      <td>ae264e3637204a6fb9bb56bc8210ddfd</td>
+      <td>bogo</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[web, email, mobile, social]</td>
+      <td>10</td>
+      <td>5</td>
+      <td>4d5c57ea9a6940dd891ad53e9dbe8da0</td>
+      <td>bogo</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[web, email, mobile]</td>
+      <td>0</td>
+      <td>4</td>
+      <td>3f207df678b143eea3cee63160fa8bed</td>
+      <td>informational</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[web, email, mobile]</td>
+      <td>5</td>
+      <td>7</td>
+      <td>9b98b8c7a33c4b65b9aebfe6a799e6d9</td>
+      <td>bogo</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[web, email]</td>
+      <td>20</td>
+      <td>10</td>
+      <td>0b1e1539f2cc45b7b9fa7c272da2e1d7</td>
+      <td>discount</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">profile</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>became_member_on</th>
+      <th>gender</th>
+      <th>id</th>
+      <th>income</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>118</td>
+      <td>20170212</td>
+      <td>None</td>
+      <td>68be06ca386d4c31939f3a4f0e3dd783</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>55</td>
+      <td>20170715</td>
+      <td>F</td>
+      <td>0610b486422d4921ae7d2bf64640c50b</td>
+      <td>112000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>118</td>
+      <td>20180712</td>
+      <td>None</td>
+      <td>38fe809add3b4fcf9315a9694bb96ff5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>75</td>
+      <td>20170509</td>
+      <td>F</td>
+      <td>78afa995795e4d85b5d9ceeca43f5fef</td>
+      <td>100000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>118</td>
+      <td>20170804</td>
+      <td>None</td>
+      <td>a03223e636434f42ac4c3df47e8bac43</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transcript</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>event</th>
+      <th>person</th>
+      <th>time</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>offer received</td>
+      <td>78afa995795e4d85b5d9ceeca43f5fef</td>
+      <td>0</td>
+      <td>{'offer id': '9b98b8c7a33c4b65b9aebfe6a799e6d9'}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>offer received</td>
+      <td>a03223e636434f42ac4c3df47e8bac43</td>
+      <td>0</td>
+      <td>{'offer id': '0b1e1539f2cc45b7b9fa7c272da2e1d7'}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>offer received</td>
+      <td>e2127556f4f64592b11af22de27a7932</td>
+      <td>0</td>
+      <td>{'offer id': '2906b810c7d4411798c6938adc9daaa5'}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>offer received</td>
+      <td>8ec6ce2a7e7949b1bf142def7d0e0586</td>
+      <td>0</td>
+      <td>{'offer id': 'fafdcd668e3743c1bb461111dcafc2a4'}</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>offer received</td>
+      <td>68617ca6246f4fbc85e91a2a49552598</td>
+      <td>0</td>
+      <td>{'offer id': '4d5c57ea9a6940dd891ad53e9dbe8da0'}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 </div>
 
 </div>
@@ -13399,7 +13597,11 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Explore-different-offers-using-portfolio-dataframe">Explore different offers using portfolio dataframe<a class="anchor-link" href="#Explore-different-offers-using-portfolio-dataframe">&#182;</a></h3>
+<h3 id="Data-Exploration-and-Preprocessing">Data Exploration and Preprocessing<a class="anchor-link" href="#Data-Exploration-and-Preprocessing">&#182;</a></h3><p>The portfolio table containing offer details is processed by creating one hot encoded column each for channels (email, social, mobile, and web) and offer type (BOGO, informational, discount).
+<br> The profile table is processed by creating one-hot encodings by dividing the customers into 10-year groups, as well as handling null values and removing error age value 118. Further, the customer income is also divided into bins with each of $10K bins.
+<br> Processed the Transcript table by adding segregating categorical columns and converting them to one-hot encoded value-based columns.</p>
+<p><br> The three tables are then merged to create a single dataframe table consisting of transaction details as well as customer and offer details.</p>
+
 </div>
 </div>
 </div>
@@ -13652,24 +13854,6 @@ div#notebook {
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#portfolio1 = portfolio.copy()</span>
-<span class="c1">#temp_dummy = pd.get_dummies(portfolio1.channels.apply(pd.Series).stack()).sum(level=0)</span>
-<span class="c1">#portfolio1 = pd.concat([portfolio1, temp_dummy], axis=1)</span>
-<span class="c1">#portfolio1 = portfolio1.drop(columns=&#39;channels&#39;)</span>
-<span class="c1">#portfolio1 = portfolio1.rename(columns={&#39;id&#39;:&#39;offer_id&#39;})</span>
-<span class="c1">#print(portfolio1)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -14611,13 +14795,6 @@ memory usage: 664.1+ KB
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Preprocessing">Data Preprocessing<a class="anchor-link" href="#Data-Preprocessing">&#182;</a></h2>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
@@ -14744,7 +14921,7 @@ memory usage: 17.6+ MB
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Feature-Description">Feature Description<a class="anchor-link" href="#Feature-Description">&#182;</a></h3><p>Lets take a final look at what our column in the dataframe means before answering our Primary questions.</p>
+<h3 id="Feature-Description-for-Merged-Transcript-data">Feature Description for Merged Transcript data<a class="anchor-link" href="#Feature-Description-for-Merged-Transcript-data">&#182;</a></h3><p>Lets take a final look at what our column in the dataframe means before answering our Primary questions.</p>
 <ul>
 <li>Customer id</li>
 <li>offer_id - Offer Registration ID of customers</li>
@@ -14769,7 +14946,8 @@ memory usage: 17.6+ MB
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br> Q. 1 What is the proportion of client who have completed the offers based on Gender, age and income levels?</p>
+<h2 id="Data-Analysis-and-Visualization">Data Analysis and Visualization<a class="anchor-link" href="#Data-Analysis-and-Visualization">&#182;</a></h2><p>Here we will answer following question: 
+<br> Q. 1 What is the proportion of client who have completed the offers based on Gender, age and income levels?</p>
 
 </div>
 </div>
@@ -14866,6 +15044,14 @@ memory usage: 17.6+ MB
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A. 1 As seen from the figure above, customers in the age group 40–80 have higher offer completion constituting nearly 75% of the offers completed. Also, customers in the income group 50K - 80K have a higher percentage of offer completion. There is no clear distinction between males and females as both are represented equally in the offer completed group</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The numerical features are further normalized using a scaler. Also, since we are interested in transactions with offer completion, the other features such as offer received and viewed are removed from further processing. The data is further split in to train and test sets for model training and evaluation.</p>
 
 </div>
 </div>
@@ -15176,7 +15362,11 @@ Name: offer completed, dtype: float64
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model-Evaluation">Model Evaluation<a class="anchor-link" href="#Model-Evaluation">&#182;</a></h2>
+<h2 id="Classification-Model-Training-and-Evaluation">Classification Model Training and Evaluation<a class="anchor-link" href="#Classification-Model-Training-and-Evaluation">&#182;</a></h2><p>The supervised learning models are trained by dividing the dataset into train and test and use the trained model to predict the outcomes on a test data set.
+Three models are used: Decision Tree classifier, Random Forest classifier, and Gaussian NB.
+<br> Here we will also find answer to: 
+<br> Q.2 What is the Best supervised learning model for predicting offers based on demographic data?</p>
+
 </div>
 </div>
 </div>
@@ -15749,9 +15939,18 @@ The recall of model is 0.1613.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Top-features-that-help-predict-consumer-behavior-for-completing-the-promotional-offers">Top features that help predict consumer behavior for completing the promotional offers<a class="anchor-link" href="#Top-features-that-help-predict-consumer-behavior-for-completing-the-promotional-offers">&#182;</a></h2><p>Here we will find answer to:
+<br> Q. 3 What are the most important features that help drive the offers to customers?</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">feature_plot</span><span class="p">(</span><span class="n">importances</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
@@ -15829,7 +16028,19 @@ The recall of model is 0.1613.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion-and-Future-Scope">Conclusion and Future Scope<a class="anchor-link" href="#Conclusion-and-Future-Scope">&#182;</a></h2><p>The work here describes an approach towards analyzing the promotional offer transaction data along with customer profile data and using it to provide offers to improve its completion in the future. Best results are provided by Random forest classifier with an accuracy score of 0.795. However, there is scope to improve the recommendations through the use of a better model, more data, and model tuning.</p>
+<h2 id="Based-on-the-model,-the-top-5-features-with-highest-normalized-weights-are:">Based on the model, the top 5 features with highest normalized weights are:<a class="anchor-link" href="#Based-on-the-model,-the-top-5-features-with-highest-normalized-weights-are:">&#182;</a></h2><p><br> Time: time in hours since the start of the test
+<br> Reward: reward given for completing an offer
+<br> duration - time for the offer to be open, in days
+<br> difficulty: minimum required spend to complete an offer
+<br> offer_Discount: types of offer. receive a discount when completing the offer</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Reflection-and-Improvement">Reflection and Improvement<a class="anchor-link" href="#Reflection-and-Improvement">&#182;</a></h2><p>The work here describes an approach towards analyzing the promotional offer transaction data along with customer profile data and using it to provide offers to improve its completion in the future. Best results are provided by a random forest classifier with an accuracy score of 0.795. The best-performing model was found using grid search. However, there is scope to improve the recommendations through the use of a better model, more data, and model tuning.</p>
 
 </div>
 </div>
