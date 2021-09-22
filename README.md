@@ -17,15 +17,13 @@ It was driven by following questions that were answered as the project came to i
 The project was completed in the following phases:
 * Dataset Exploration and Preprocessing:- In this process, the data provided was cleaned, processed and merged for further analysis.
 * Data Analysis &  Visualization: In this process, few questions were answered by analysing the question and  providing visualization which answers the question 1:     
-##### In order to compute the proportion of male or female within the age range of 30 to 70 with income ranging from 30k to 100k who have commpleted the offer, we need their respective data and the total number of participants in the test.   
-* Creation of supervised Model and Performance Evaluation: In this step, various machine learning model(Decision Tree, Gaussian NB and Random Forest) were tested on the given dataset and their respective performances were evaluated. This step also answers Question 2. 
-* Important Feature Analysis: In this process, the best estimator among the three was used to predict the most important feature that impacted the promotional offer completion in customers.   
-##### We found out that Time, Duration , Reward, Difficulty and Discount are the top 5 feature drivers that estimate the offer completion with Time being the highest impact driver for features
+* Building supervised Model and Performance Evaluation: In this step, various machine learning model(Decision Tree, Gaussian NB and Random Forest) were tested on the given dataset and their respective performances were evaluated. This step also answers Question 2. 
+* Top Feature Selection: In this process, the best estimator among the three was used to predict the most important feature that impacted the promotional offer completion in customers.   
 
 ## File Descriptions
 #### Data Dictionary
 ##### profile.json
-Rewards program users (17000 users x 5 fields)
+Rewards program user profile (17000 users x 5 fields)
 
 gender: (categorical) M, F, O, or null   
 age: (numeric) missing value encoded as 118   
@@ -34,7 +32,7 @@ became_member_on: (date) format YYYYMMDD
 income: (numeric)      
 
 ##### portfolio.json
-Offers sent during 30-day test period (10 offers x 6 fields)
+Offer details sent during 30-day test period (10 offers x 6 fields)
 
 reward: (numeric) money awarded for the amount spent   
 channels: (list) web, email, mobile, social   
@@ -44,7 +42,7 @@ offer_type: (string) bogo, discount, informational
 id: (string/hash)     
  
 ##### transcript.json
-Event log (306648 events x 4 fields)
+Transaction logs (306648 events x 4 fields)
 
 person: (string/hash)   
 event: (string) offer received, offer viewed, transaction, offer completed   
@@ -61,11 +59,9 @@ time: (numeric) hours after start of test
 * Pandas
 * Numpy
 * Matplotlib
-* Anaconda
 * Seaborn
 * Json
 * Sklearn model selections
-* ProgressBar
 * Sklearn.metrics 
 * Matplotlib patches
 * os
@@ -75,4 +71,4 @@ time: (numeric) hours after start of test
 
 
 ## Acknowledgement
-I would like to thank Udacity for this amazing project, and Starbucks  for providing the data.
+I would like to thank Udacity for the project, and Starbucks for providing the data.
