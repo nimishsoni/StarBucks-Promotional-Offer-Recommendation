@@ -4,15 +4,8 @@ Once every few days, Starbucks sends out an offer to users of the mobile app. An
 Not all users receive the same offer, and that is the challenge to solve with this data set.   
 Main task is to combine transaction, demographic and offer data to determine which demographic groups respond best to which offer type.
 You can find the blog post link here [MEDIUM-BLOG](https://nimishsoni.medium.com/promotional-offer-recommendation-engine-for-starbucks-coffee-48bc6d0a1988)
-## Table Of Contents  
-* [Motivation](#moti)  
-* [Summary](#summary)  
-* [File Description](#desc)  
-* [Prerequisites](#prerequisite)
-* [Acknowledgement](#acknow) 
 
 
-<a name="moti"></a>
 ## Motivation
 The motivation behind this project was exploring the Starbuck’s Dataset which simulates how people make purchasing decisions and how those decisions are influenced by promotional offers.   
 It was driven by following questions that were answered as the project came to its completion:
@@ -20,7 +13,6 @@ It was driven by following questions that were answered as the project came to i
 * What is the Best supervised learning model for predicting offers based on demographic data?
 * What are the most important features that help drive the offers in customers?
 
-<a name="summary"></a>
 ## Summary 
 The project was completed in the following phases:
 * Dataset Exploration and Preprocessing:- In this process, the data provided was cleaned, processed and merged for further analysis.
@@ -30,8 +22,6 @@ The project was completed in the following phases:
 * Important Feature Analysis: In this process, the best estimator among the three was used to predict the most important feature that impacted the promotional offer completion in customers.   
 ##### We found out that Time, Duration , Reward, Difficulty and Discount are the top 5 feature drivers that estimate the offer completion with Time being the highest impact driver for features
 
-
-<a name="desc"></a>
 ## File Descriptions
 #### Data Dictionary
 ##### profile.json
@@ -64,7 +54,6 @@ amount: (numeric) money spent in "transaction"
 reward: (numeric) money gained from "offer completed"   
 time: (numeric) hours after start of test   
 
-<a name="prerequisite"/></a>
 ## Prerequisites
 * Python
 * VsCode
@@ -85,9 +74,5 @@ time: (numeric) hours after start of test
 * itertools
 
 
-<a name="acknow"/></a>
 ## Acknowledgement
 I would like to thank Udacity for this amazing project, and Starbucks  for providing the data.
-
-<a name="running"/></a>
-
